@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <!-- StaticFiles 挂载在 /static，所以这里用 URL 路径引用 -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<h1>{{ title }}</h1>
+<p>这是 Jinja2 渲染的服务端页面，不是 JSON 接口。</p>
+
+<ul>
+    {% for item in items %}
+    <li>{{ loop.index }}. {{ item.name }} —— ￥{{ item.price }}</li>
+    {% else %}
+    <li>暂无数据</li>
+    {% endfor %}
+</ul>
+
+<form method="post" action="/form-page">
+    <input type="text" name="username" placeholder="用户名" required>
+    <button type="submit">提交（表单 POST）</button>
+</form>
+</body>
+</html>
